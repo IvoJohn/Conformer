@@ -1,8 +1,8 @@
 import torch
 from torch import nn
 
-from conformer_block import ConformerBlock
-from convolution_subsampling import ConvolutionSubsampling
+from conformer_modules.conformer_block import ConformerBlock
+from conformer_modules.convolution_subsampling import ConvolutionSubsampling
 
 
 class ConformerEncoder(nn.Module):
