@@ -5,17 +5,17 @@ from torch import nn
 class FeedForward(nn.Module):
     def __init__(
         self,
-        in_channels: int = 128,
+        encoder_dim: int = 128,
         dropout=0.1,
         expansion_factor: int = 4,
     ):
         super(FeedForward, self).__init__()
 
-        self.prenorm = nn.LayerNorm([in_channels])
-        self.linear = nn.Linear(in_channels, expansion_factor * in_channels)
+        self.prenorm = nn.LayerNorm([encoder_dim])
+        self.linear = nn.Linear(encoder_dim, expansion_factor * encoder_dim)
         self.swish = nn.SiLU()
         self.dropout = nn.Dropout(dropout)
-        self.linear2 = nn.Linear(expansion_factor * in_channels, in_channels)
+        self.linear2 = nn.Linear(expansion_factor * encoder_dim, encoder_dim)
 
     def forward(self, x):
         x_forward = self.prenorm(x)

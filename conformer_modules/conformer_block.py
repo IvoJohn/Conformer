@@ -8,7 +8,7 @@ from conformer_modules.convolution import ConvolutionModule
 class ConformerBlock(nn.Module):
     def __init__(
         self,
-        in_channels: int = 128,
+        encoder_dim: int = 128,
         dropout: int = 0.1,
         feedforward_expansion_factor=4,
         num_heads=8,
@@ -17,23 +17,23 @@ class ConformerBlock(nn.Module):
         super(ConformerBlock, self).__init__()
 
         self.feedforward = FeedForward(
-            in_channels=in_channels,
+            encoder_dim=encoder_dim,
             dropout=dropout,
             expansion_factor=feedforward_expansion_factor,
         )
         self.multihead = MultiHeadSelfAttention(
-            in_channels=in_channels,
+            encoder_dim=encoder_dim,
             num_heads=num_heads,
             dropout=dropout,
             pos_embed_max_len=pos_embed_max_len,
         )
-        self.conv = ConvolutionModule(in_channels=in_channels, dropout=dropout)
+        self.conv = ConvolutionModule(encoder_dim=encoder_dim, dropout=dropout)
         self.feedforward2 = FeedForward(
-            in_channels=in_channels,
+            encoder_dim=encoder_dim,
             dropout=dropout,
             expansion_factor=feedforward_expansion_factor,
         )
-        self.layer_norm = nn.LayerNorm(in_channels)
+        self.layer_norm = nn.LayerNorm(encoder_dim)
 
     def forward(self, x):
 

@@ -5,16 +5,16 @@ from torch import nn
 class MultiHeadSelfAttention(nn.Module):
     def __init__(
         self,
-        in_channels=128,
+        encoder_dim=128,
         num_heads: int = 8,
         dropout: float = 0.1,
         pos_embed_max_len=1024,
     ):
         super(MultiHeadSelfAttention, self).__init__()
-        self.prenorm = nn.LayerNorm(in_channels)
-        self.multihead = nn.MultiheadAttention(in_channels, num_heads=num_heads)
+        self.prenorm = nn.LayerNorm(encoder_dim)
+        self.multihead = nn.MultiheadAttention(encoder_dim, num_heads=num_heads)
         self.pos_embedding = RelativePositionalEmbedding(
-            input_dim=in_channels, max_len=pos_embed_max_len
+            input_dim=encoder_dim, max_len=pos_embed_max_len
         )
         self.dropout = nn.Dropout(dropout)
 

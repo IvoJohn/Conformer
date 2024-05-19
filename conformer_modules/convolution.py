@@ -5,26 +5,26 @@ from torch import nn
 class ConvolutionModule(nn.Module):
     def __init__(
         self,
-        in_channels: int = 128,
+        encoder_dim: int = 128,
         dropout: int = 0.1,
     ):
         super(ConvolutionModule, self).__init__()
 
-        self.prenorm = nn.LayerNorm(in_channels)
+        self.prenorm = nn.LayerNorm(encoder_dim)
         self.pointwise = nn.Conv1d(
-            in_channels=in_channels, out_channels=2 * in_channels, kernel_size=1
+            in_channels=encoder_dim, out_channels=2 * encoder_dim, kernel_size=1
         )
         self.glu = nn.GLU(dim=-2)
         self.depthwise = nn.Conv1d(
-            in_channels,
-            in_channels,
+            encoder_dim,
+            encoder_dim,
             kernel_size=1,
-            groups=in_channels,  # groups equal to the number of input channels corresponds to deptwhise convolution
+            groups=encoder_dim,  # groups equal to the number of input channels corresponds to deptwhise convolution
         )
-        self.batch_norm = nn.BatchNorm1d(in_channels)
+        self.batch_norm = nn.BatchNorm1d(encoder_dim)
         self.swish = nn.SiLU()
         self.pointwise2 = nn.Conv1d(
-            in_channels=in_channels, out_channels=in_channels, kernel_size=1
+            in_channels=encoder_dim, out_channels=encoder_dim, kernel_size=1
         )
         self.dropout = nn.Dropout(dropout)
 
