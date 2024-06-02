@@ -14,7 +14,7 @@ class ConformerTransducer(nn.Module):
         feedforward_expansion_factor: int = 4,
         num_heads: int = 8,
         num_blocks: int = 16,
-        subsampling_stride: int = 26,
+        subsampling_stride: int = 10,
         subsampling_kernel_size: int = 32,
         pos_embed_max_len: int = 1024,
         decoder_layers: int = 1,  # lstm layers
