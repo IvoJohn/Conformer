@@ -1,28 +1,30 @@
 # Conformer: Convolution-augmented Transformer for Speech Recognition
-[Unofficial] Implementation of the publication "Conformer: Convolution-augmented Transformer for Speech Recognition" by Anmol Gulati et.al
+[Unofficial] Implementation of the publication "Conformer: Convolution-augmented Transformer for Speech Recognition" by Anmol Gulati et al.
 <br>
-Published 16 May 2020.
+Published on 16 May 2020.
 
-The Conformer architecture represents a large advancement in the field of Automatic Speech Recognition (ASR). Developed by researchers at Google, Conformer integrates convolutional neural networks (CNNs) with Transformer models to effectively capture both local and global dependencies in audio sequences. This innovative approach combined the strengths of CNNs in exploiting local features and Transformers in modeling long-range global interactions, achieving state-of-the-art results on the LibriSpeech benchmark.
+The Conformer architecture represented a significant advancement in the field of Automatic Speech Recognition (ASR). Developed by researchers at Google, Conformer integrated convolutional neural networks (CNNs) with Transformer models to effectively capture both local and global dependencies in audio sequences. This innovative approach combined the strengths of CNNs in exploiting local features and Transformers in modeling long-range global interactions, achieving state-of-the-art results on the LibriSpeech benchmark.
 
-Extensive authors' experimentation and ablation studies highlighted the importance of each component within the Conformer model. Key findings included the superior performance of the convolution module when placed after the self-attention module and the effectiveness of using macaron-style feed-forward layers.
+Extensive experimentation and ablation studies by the authors highlighted the importance of each component within the Conformer model. Key findings included the superior performance of the convolution module when placed after the self-attention module and the effectiveness of using macaron-style feed-forward layers.
+
 <br><br><br>
 
 # Architecture
 
 <div align="center">
 <img src="readme_files/architecture.png" alt="Conformer architecture" />
+<br>Source: original publication.
 </div>
 
 <br>
 <br>
-The architecture introduced a novel combination of self-attention and convolution modules, sandwiched between macaron-like feed-forward layers, which ensures parameter efficiency and improved performance. This model's versatility was demonstrated with three versions (small, medium, and large), showing competitive performance even with a parameter size as small as 10M.
+The architecture introduced a novel combination of self-attention and convolution modules, sandwiched between macaron-like feed-forward layers, which ensured parameter efficiency and improved performance. This model's versatility was demonstrated with three versions (small, medium, and large), showing competitive performance even with a parameter size as small as 10M.
 <br><br><br>
 
 # Results
 
-At the time of the publication Conformer surpassed all other Automatic Speech Recognition models on a standard LibriSpeech dataset.
-It significantly outperformed previous models by achieving a Word Error Rate (WER) of 2.1%/4.3% without using a language model, and 1.9%/3.9% with an external language model on the test/test-other datasets.
+At the time of the publication, Conformer surpassed all other Automatic Speech Recognition models on a standard LibriSpeech dataset. It significantly outperformed previous models by achieving a Word Error Rate (WER) of 2.1%/4.3% without using a language model, and 1.9%/3.9% with an external language model on the test/test-other datasets.
+
 
 <div align="center">
 <small>
@@ -48,4 +50,5 @@ It significantly outperformed previous models by achieving a Word Error Rate (WE
 | Conformer(L)      | 118.8       | **2.1**                     | **4.3**                    | **1.9**                  | **3.9**                 |
 
 </small>
+Source: original publication.
 </div>
