@@ -1,8 +1,9 @@
 import torch
 from torch import nn
-from conformer_modules.feedforward import FeedForward
-from conformer_modules.multihead import MultiHeadSelfAttention
-from conformer_modules.convolution import ConvolutionModule
+
+from .feedforward import FeedForward
+from .multihead import MultiHeadSelfAttention
+from .convolution import ConvolutionModule
 
 
 class ConformerBlock(nn.Module):

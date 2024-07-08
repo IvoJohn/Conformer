@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-from conformer_modules.conformer_encoder import ConformerEncoder
+from .conformer_encoder import ConformerEncoder
 
 
 class ConformerTransducer(nn.Module):
